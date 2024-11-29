@@ -25,6 +25,10 @@ export default async function DashboardPage() {
   const postStatus = async (formData: FormData) => {
     "use server";
     const status = formData.get("status") as string;
+    if (status.length > 175) {
+      return;
+    }
+    
     await createPost(userId, status);
     revalidatePath("/dashboard");
   };

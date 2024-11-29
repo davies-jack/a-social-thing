@@ -28,7 +28,7 @@ model Posts {
   userId    String
   user      User     @relation(fields: [userId], references: [id])
 
-  status    String
+  status    String   @db.VarChar(175)
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
