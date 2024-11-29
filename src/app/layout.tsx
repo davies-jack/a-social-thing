@@ -16,7 +16,11 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <AuthProvider>
-          {children}
+          <main className="
+            max-w-screen-lg mx-auto
+          ">
+            {children}
+          </main>
         </AuthProvider>
       </body>
     </html>
