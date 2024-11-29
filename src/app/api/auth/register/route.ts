@@ -8,14 +8,14 @@ export async function POST(request: NextRequest) {
 
     if (!email || !username || !password || !confirmPassword) {
         return NextResponse.json(
-            { message: 'Missing required fields' },
+            { message: 'Missing required fields', error: true, },
             { status: 400 }
         );
     }
 
     if (password !== confirmPassword) {
         return NextResponse.json(
-            { message: 'Passwords do not match' },
+            { message: 'Passwords do not match', error: true },
             { status: 400 }
         );
     }
@@ -27,7 +27,7 @@ export async function POST(request: NextRequest) {
 
     if (emailExists) {
         return NextResponse.json(
-            { message: 'Email already exists' },
+            { message: 'Email already exists', error: true },
             { status: 400 }
         );
     }
@@ -38,7 +38,7 @@ export async function POST(request: NextRequest) {
 
     if (usernameExists) {
         return NextResponse.json(
-            { message: 'Username already exists' },
+            { message: 'Username already exists', error: true },
             { status: 400 }
         );
     }
@@ -61,7 +61,7 @@ export async function POST(request: NextRequest) {
     } catch (error) {
         console.error(error);
         return NextResponse.json(
-            { message: 'Internal server error' },
+            { message: 'Internal server error', error: true },
             { status: 500 }
         );
     }
