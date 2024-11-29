@@ -13,7 +13,7 @@ export default function CreatePostForm({ onSubmit }: Props) {
   return (
     <form
       action={(formData) => {
-        if (post.length < 175) {
+        if (post.length <= 175) {
           onSubmit(formData);
           setPost("");
         }
