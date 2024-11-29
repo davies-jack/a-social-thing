@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -5,6 +7,16 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+
+  --bg-primary: #16161a;
+  --bg-secondary: #242629;
+  --bg-card: #16161a;
+  --headline-text: #fffffe;
+  --paragraph-text: #94a1b2;
+  --bg-button: #7f5af0;
+  --button-text: #fffffe;
+
+  --tertiary: #2cb67d;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -15,7 +27,7 @@
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  color: var(--paragraph-text);
+  background: var(--bg-primary);
+  font-family: 'Inter', sans-serif;
 }
