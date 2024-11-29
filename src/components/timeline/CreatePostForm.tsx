@@ -5,7 +5,6 @@ type Props = {
 export default function CreatePostForm({ onSubmit }: Props) {
   return (
     <form
-      method="POST"
       action={onSubmit}
       className="w-full flex flex-col gap-2 items-start p-6"
     >
