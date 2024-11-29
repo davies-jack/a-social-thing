@@ -4,7 +4,9 @@
 import prisma from '@/utils/db';
 import { POST } from './route';
 import { NextRequest } from 'next/server';
+import bcrypt from 'bcrypt';
 
+jest.mock('bcrypt');
 jest.mock('@/utils/db', () => ({
     __esModule: true,
     default: {
@@ -68,6 +70,27 @@ describe('POST /api/auth/login', () => {
 
         expect(response?.status).toBe(404);
         expect(body?.message).toBe('User not found');
+    });
+    it('should return 401 if invalid password', async () => {
+        (mockPrisma.user.findUnique as jest.Mock).mockResolvedValueOnce({
+            id: '1',
+            email: 'test@test.com',
+            password: 'hashedPassword',
+            username: 'testuser',
+        });
+        (bcrypt.compare as jest.Mock).mockResolvedValueOnce(false);
+
+        const req = await createPostRequest(
+            'http://localhost:3000/api/auth/login',
+            NORMAL_BODY,
+            HEADERS
+        );
+
+        const response = await POST(req);
+        const body = await response?.json();
+
+        expect(response?.status).toBe(401);
+        expect(body?.message).toBe('Invalid password');
     });
     it('should return 500 if error occurs', async () => {
         (mockPrisma.user.findUnique as jest.Mock).mockRejectedValueOnce(new Error('Database error'));
