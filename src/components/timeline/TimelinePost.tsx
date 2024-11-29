@@ -28,7 +28,7 @@ export default function TimelinePost({
           <span className="text-headline-text font-bold">{username}</span>
         </Link>
       </span>
-      <span className="text-headline-text tracking-normal leading-tight mt-1 mb-2 block overflow-hidden wo">
+      <span className="text-headline-text tracking-normal leading-tight mt-1 mb-2 block break-all whitespace-pre-wrap max-w-full overflow-wrap-anywhere">
         {status}
       </span>
       <span className="timestamp text-xs text-paragraph-text font-medium">
