@@ -103,7 +103,9 @@ export const getTimeline = async (userId: string) => {
             }
         });
 
-        return [...ourPosts, ...followingPosts];
+        const timeline = [...ourPosts, ...followingPosts];
+        timeline.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
+        return timeline;
     } catch (error) {
         console.error(error);
         return [];
