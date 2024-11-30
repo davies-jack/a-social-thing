@@ -5,7 +5,7 @@ import { jwtVerify } from 'jose';
 const LOGIN_PATH = '/auth/login';
 export async function middleware(request: NextRequest) {
     const token = request.cookies.get('token');
-    const allowedPaths = ['/auth/login', '/auth/register'];
+    const allowedPaths = ['/', '/auth/login', '/auth/register'];
     const currentPath = request.nextUrl.pathname;
 
     if (allowedPaths.includes(currentPath)) {
