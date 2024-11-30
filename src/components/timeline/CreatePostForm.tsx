@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Button from "../Button";
 type Props = {
   onSubmit: (
     formData: FormData,
@@ -49,12 +50,7 @@ export default function CreatePostForm({ onSubmit }: Props) {
         value={post}
       />
       <div className="w-full flex flex-row justify-between items-center gap-2">
-        <button
-          type="submit"
-          className="rounded-md p-2 px-4 text-sm text-button-text bg-bg-button font-bold self-end"
-        >
-          post your status
-        </button>
+        <Button label="post your status" />
         <p
           className={`
             text-sm text-button-text
