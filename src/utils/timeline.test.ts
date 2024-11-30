@@ -103,7 +103,7 @@ describe('likePost', () => {
         const postId = '1';
         const userId = '123';
         (mockPrisma.likes.findFirst as jest.Mock).mockResolvedValueOnce(null);
-        (mockPrisma.likes.count as jest.Mock).mockResolvedValueOnce(1);
+        (mockPrisma.likes.count as jest.Mock).mockResolvedValueOnce(0);
         (mockPrisma.likes.create as jest.Mock).mockResolvedValueOnce({ id: '1' });
         const result = await likePost(postId, userId);
         expect(result).toEqual({ like: { id: '1' }, likeAmount: 1 });
