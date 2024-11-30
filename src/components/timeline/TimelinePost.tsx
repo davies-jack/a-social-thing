@@ -42,7 +42,9 @@ export default function TimelinePost({
           hasLiked={hasLiked}
         />
         <li className="hover:text-headline-text cursor-pointer">
-          comment <span className="text-headline-text font-bold">22K</span>
+          <Link href={`/post/${post.id}`}>
+            comment <span className="text-headline-text font-bold">22K</span>
+          </Link>
         </li>
         <li className="hover:text-headline-text cursor-pointer">
           share <span className="text-headline-text font-bold">44</span>
