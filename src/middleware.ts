@@ -19,7 +19,8 @@ export async function middleware(request: NextRequest) {
     try {
         const { payload } = await jwtVerify(token.value, new TextEncoder().encode(process.env.JWT_SECRET));
         const requestHeaders = new Headers(request.headers);
-        requestHeaders.set('x-user-id', payload.userId as string)
+        requestHeaders.set('x-user-id', payload.userId as string);
+        requestHeaders.set('x-pathname', request.nextUrl.pathname);
 
         return NextResponse.next({
             request: {
@@ -32,5 +33,9 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-    matcher: '/((?!api|_next/static|_next/image|favicon.ico).*)',
+    matcher: [
+        '/((?!api|_next/static|_next/image|favicon.ico).*)',
+        '/dashboard/:path*',
+        '/profile/:path*'
+    ],
 };
