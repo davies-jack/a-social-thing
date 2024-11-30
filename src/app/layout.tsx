@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   description: "a social thing",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
@@ -16,9 +16,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <AuthProvider>
-          <main className="
-            max-w-screen-lg mx-auto
-          ">
+          <main className="max-w-screen-lg mx-auto">
             {children}
           </main>
         </AuthProvider>

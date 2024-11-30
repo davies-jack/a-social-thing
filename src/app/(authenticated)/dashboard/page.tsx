@@ -1,6 +1,6 @@
 import { getTimeline, isLiked, likePost } from "@/utils/timeline";
 import { headers } from "next/headers";
-import { createPost } from "../actions/post";
+import { createPost } from "../../actions/post";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import CreatePostForm from "@/components/timeline/CreatePostForm";
@@ -10,10 +10,11 @@ import { SinglePost } from "@/types/Post";
 export default async function DashboardPage() {
   const headersList = await headers();
   const userId = headersList.get("x-user-id") as string;
+
   if (!userId) {
     redirect("/login");
   }
-
+  
   const timeline = await getTimeline(userId);
   const prefetchedPosts = await Promise.all(
     timeline.map(async (post) => ({
@@ -24,7 +25,9 @@ export default async function DashboardPage() {
 
   const postStatus = async (formData: FormData) => {
     "use server";
-    const status = formData.get("status") as string;
+    let status = formData.get("status") as string;
+    status = status.trim();
+    
     if (status.length > 175) {
       return;
     }
@@ -34,11 +37,6 @@ export default async function DashboardPage() {
   };
 
   return (
-    <main className="grid md:grid-cols-dashboard grid-cols-1 gap-4 items-start">
-      <section className="bg-bg-secondary rounded-md p-4">
-        <h1>welcome back</h1>
-      </section>
-
       <section>
         <CreatePostForm onSubmit={postStatus} />
         <section>
@@ -63,7 +61,6 @@ export default async function DashboardPage() {
             })}
           </ul>
         </section>
-      </section>
-    </main>
+        </section>
   );
 }
