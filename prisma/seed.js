@@ -4,6 +4,45 @@ const bcrypt = require('bcrypt');
 
 const prisma = new PrismaClient();
 
+const mockPosts = [
+    {
+        status: 'hey, all! this is my first post.'
+    },
+    {
+        status: 'gonna be adding my thoughts here.'
+    },
+    {
+        status: 'this is a post about the weather.'
+    },
+    {
+        status: 'twitter who?'
+    },
+    {
+        status: 'no thoughts head empty bestie 🤪'
+    },
+    {
+        status: 'living my best life rn fr fr'
+    },
+    {
+        status: 'this fit goes so hard ngl'
+    },
+    {
+        status: 'lowkey down bad but vibing tho'
+    },
+    {
+        status: 'slay queen periodt 💅'
+    },
+    {
+        status: 'touch grass? in this economy? 😭'
+    },
+    {
+        status: 'main character energy only ✨'
+    },
+    {
+        status: 'it\'s giving... idk what it\'s giving tbh'
+    }
+]
+
 async function main() {
   const user1 = await prisma.user.create({
     data: {
@@ -24,16 +63,26 @@ async function main() {
   const post1 = await prisma.posts.create({
     data: {
       userId: user1.id,
-      status: 'Hello world! This is my first post.'
+      status: 'hey, all! this is my first post.'
     }
   });
 
-await prisma.posts.create({
+  await prisma.posts.create({
     data: {
       userId: user2.id,
-      status: 'Excited to join this platform!'
+      status: 'gonna be adding my thoughts here.'
     }
   });
+
+  for (const post of mockPosts) {
+    const randomUser = Math.random() < 0.5 ? user1 : user2;
+    await prisma.posts.create({
+      data: {
+        userId: randomUser.id,
+        status: post.status
+      }
+    })
+  }
 
   // jane follows john
   await prisma.relationships.create({
