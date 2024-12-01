@@ -26,7 +26,7 @@ export default function CreatePostForm({ onSubmit }: Props) {
           setPost("");
         }
       }}
-      className="w-full flex flex-col gap-2 items-start p-6"
+      className="w-full flex flex-col gap-2 items-start"
     >
       {noContentError && (
         <p className="text-red-500 text-sm m-0 p-0 font-bold">
