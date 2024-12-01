@@ -23,6 +23,7 @@ export default function LikesButton({
         transition-colors duration-75
         hover:bg-bg-primary hover:border-2 hover:border-transparent hover:shadow-md
         text-xs
+        ${hasLiked && "border-2 border-red-600 hover:border-red-800"}
         ${className}
       `}
       onClick={toggleLikePost}
