@@ -20,6 +20,7 @@ model User {
   followers Relationships[] @relation("follower")
   following Relationships[] @relation("following")
   likes Likes[]
+  comments Comments[]
 }
 
 model Posts {
@@ -34,6 +35,22 @@ model Posts {
   updatedAt DateTime @updatedAt
 
   likes Likes[]
+  comments Comments[]
+}
+
+model Comments {
+  id        String   @id @default(cuid())
+
+  postId String
+  post   Posts    @relation(fields: [postId], references: [id])
+
+  userId String
+  user   User     @relation(fields: [userId], references: [id])
+
+  comment String   @db.VarChar(175)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model Likes {
