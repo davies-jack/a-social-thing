@@ -3,12 +3,12 @@ import CreateCommentForm from './CreateCommentForm';
 
 describe('CreateCommentForm', () => {
   it('renders correctly', () => {
-    render(<CreateCommentForm />);
+    render(<CreateCommentForm handleCreateComment={() => Promise.resolve()} />);
     expect(screen.getByText('add a comment')).toBeInTheDocument();
   });
 
   it('applies the correct default styling classes', () => {
-    render(<CreateCommentForm />);
+    render(<CreateCommentForm handleCreateComment={() => Promise.resolve()} />);
 
     const formElement = screen.getByRole('form');
     const formElementChild = formElement.firstChild;
