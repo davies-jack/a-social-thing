@@ -3,7 +3,7 @@ import Button from "../Button";
 
 export default function CreateCommentForm() {
   return (
-    <form>
+    <form role="form">
       <div className="mt-4 flex flex-col items-center justify-center w-1/2 mx-auto">
         <div>
           <label htmlFor="comment" className="text-headline-text text-sm font-bold text-left">
