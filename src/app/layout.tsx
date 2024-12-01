@@ -16,7 +16,7 @@ export default async function RootLayout({
     <html lang="en">
       <body>
         <AuthProvider>
-          <main className="max-w-screen-lg mx-auto">
+          <main>
             {children}
           </main>
         </AuthProvider>
