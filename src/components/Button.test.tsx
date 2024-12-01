@@ -12,6 +12,14 @@ describe('Button', () => {
     expect(screen.getByText('loading...')).toBeInTheDocument();
   });
 
+  it('applies the correct default styling classes', () => {
+    render(<Button label="Click me" />);
+    const button = screen.getByRole('button');
+    expect(button).toHaveClass('self-end');
+    expect(button).toHaveClass('px-4');
+    expect(button).toHaveClass('py-2');
+  });
+
   it('applies custom className when provided', () => {
     render(<Button label="Click me" className="custom-class" />);
     const button = screen.getByRole('button');
