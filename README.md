@@ -23,6 +23,8 @@ so far, you can:
 
 to install, firstly clone the repo, then run `npm install` to install the dependencies.
 
+copy the `.env.example` file to `.env` and supply your own values.
+
 with a postgresql database running, run `npx prisma migrate dev` to create the schema.
 
 i added some seed data to the database, so you can run `npx prisma db seed` to populate the database with some data.
