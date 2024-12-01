@@ -11,10 +11,12 @@ type Props = {
 export default function CreatePostForm({ onSubmit }: Props) {
   const [post, setPost] = useState("");
   const [noContentError, setNoContentError] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   return (
     <form
       action={(formData) => {
+        setIsLoading(true);
         setNoContentError(false);
 
         if (post.length === 0) {
@@ -25,6 +27,7 @@ export default function CreatePostForm({ onSubmit }: Props) {
           onSubmit(formData);
           setPost("");
         }
+        setIsLoading(false);
       }}
       className="w-full flex flex-col gap-2 items-start"
     >
@@ -50,7 +53,7 @@ export default function CreatePostForm({ onSubmit }: Props) {
         value={post}
       />
       <div className="w-full flex flex-row justify-between items-center gap-2">
-        <Button label="post your status" />
+        <Button label="post your status" disabled={isLoading} />
         <p
           className={`
             text-sm text-button-text
