@@ -24,12 +24,13 @@ export default async function SinglePostPage({ params }: Props) {
   }
 
   return (
-    <section className="p-6">
+    <section>
       <Container>
         <p className="text-headline-text">{post.status}</p>
         <span className="text-paragraph-text text-xs">
           created by @{post.user.username} on {formatDate(post.createdAt)}
         </span>
+
         <LikesButton
           likeAmount={post.likes.length}
           toggleLikePost={async () => {
@@ -38,6 +39,7 @@ export default async function SinglePostPage({ params }: Props) {
             revalidatePath(`/post/${post.id}`);
           }}
           hasLiked={post.likes.some((like) => like.userId === post.userId)}
+          className="w-fit mt-2"
         />
       </Container>
 

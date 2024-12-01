@@ -63,7 +63,7 @@ export default async function ProfilePage({ params }: Props) {
   const posts = await getPosts(profileUserId);
 
   return (
-    <main className="p-6">
+    <main>
       <div className="bg-bg-secondary p-6 rounded-md">
         <h1 className="text-headline-text text-lg font-bold">{params.username}</h1>
         <div className="mt-1 flex flex-row gap-2 text-sm">

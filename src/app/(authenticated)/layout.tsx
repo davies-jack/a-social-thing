@@ -21,9 +21,9 @@ export default async function RootLayout({
 
     return (
                 <AuthProvider>
-                  <main className="max-w-screen-lg mx-auto grid md:grid-cols-dashboard grid-cols-1 gap-4 items-start">
-                    <section className="bg-red-500">
-                      <div className="bg-bg-secondary rounded-md p-4 m-6">
+                  <main className=" grid md:grid-cols-dashboard grid-cols-1 gap-4 items-start h-screen">
+                    <section className="pt-6 border-r-none md:border-r-2 md:border-r-bg-button block md:fixed md:w-[320px] h-auto md:h-screen px-6 bg-bg-secondary">
+                      <div className="bg-bg-card rounded-md p-4 mb-6">
                         <h1 className="text-headline-text text-lg font-bold flex flex-row gap-2">
                           <span className="text-paragraph-text">@</span>
                           <span className="font-bold">{username}</span>
@@ -33,28 +33,30 @@ export default async function RootLayout({
                           <span className="hover:text-headline-text hover:cursor-pointer">{getFollowingAmount(userId as string)} following</span>
                         </div>
                       </div>
-                      <ul className="rounded-md m-6 text-sm text-headline-text py-1">
+                      <ul className="rounded-md text-sm text-headline-text py-1">
                         <li className={
-                          `p-2 px-4 m-4 rounded-md bg-bg-secondary cursor-pointer shadow-md font-bold
+                          `p-2 px-4 rounded-md bg-bg-card cursor-pointer shadow-md font-bold
                           ${isOnDashboard ? "border border-bg-button" : ""}
                           `
                         }>
                             <Link href="/dashboard">dashboard</Link>
                         </li>
                         <li className={`
-                          p-2 px-4 m-4 rounded-md bg-bg-secondary cursor-pointer shadow-md font-bold
+                          p-2 px-4 my-4 rounded-md bg-bg-card cursor-pointer shadow-md font-bold
                           ${isOnOurProfile ? "border border-bg-button" : ""}
                           `}>
                             <Link href={`/profile/${username}`}>your profile</Link>
                           </li>
                         <li className={`
-                          p-2 px-4 m-4 rounded-md bg-bg-secondary cursor-pointer shadow-md font-bold
+                          p-2 px-4 rounded-md bg-bg-card cursor-pointer shadow-md font-bold
                           ${isOnOtherProfile ? "border border-bg-button" : ""}
                           `}>profile view</li>
                       </ul>
                       <p className="text-paragraph-text text-xs text-center m-6 cursor-pointer">logout?</p>
                     </section>
-                    {children}
+                    <div className="md:col-start-2 overflow-y-auto h-screen pt-6 px-0 md:px-24">
+                      {children}
+                    </div>
                   </main>
                 </AuthProvider>
           );

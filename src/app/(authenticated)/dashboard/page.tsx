@@ -39,9 +39,9 @@ export default async function DashboardPage() {
   return (
       <section>
         <CreatePostForm onSubmit={postStatus} />
-        <section>
+        <section className="flex flex-col items-center">
           <h2 className="text-headline-text text-lg font-bold">your timeline</h2>
-          <ul className="mt-4 pr-4">
+          <ul className="mt-4 w-full lg:w-3/4">
             {timeline.length === 0 && <li>no posts yet</li>}
             {prefetchedPosts.map((post: SinglePost) => {
               const toggleLikePost = async () => {
