@@ -2,6 +2,7 @@ import { SinglePost } from "@/types/Post";
 import Link from "next/link";
 import LikesButton from "@/components/timeline/LikesButton";
 import { formatDate } from "@/utils/date";
+import Pill from "../Pill";
 
 type Props = {
   post: SinglePost;
@@ -41,14 +42,14 @@ export default function TimelinePost({
           toggleLikePost={toggleLikePost}
           hasLiked={hasLiked}
         />
-        <li className="hover:text-headline-text cursor-pointer">
-          <Link href={`/post/${post.id}`}>
+        <Link href={`/post/${post.id}`}>
+          <Pill>
             comment <span className="text-headline-text font-bold">22K</span>
-          </Link>
-        </li>
-        <li className="hover:text-headline-text cursor-pointer">
+          </Pill>
+        </Link>
+        <Pill>
           share <span className="text-headline-text font-bold">44</span>
-        </li>
+        </Pill>
       </ul>
     </li>
   );
