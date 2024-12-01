@@ -47,7 +47,7 @@ function LoginForm({
         </label>
         <InputField
           type="email"
-          value={email}
+          value={email || ""}
           onChange={(e) => setEmail(e.target.value)}
           placeholder="john@example.com"
         />
@@ -60,7 +60,7 @@ function LoginForm({
         </label>
         <InputField
           type="password"
-          value={password}
+          value={password || ""}
           onChange={(e) => setPassword(e.target.value)}
           placeholder="password"
         />
