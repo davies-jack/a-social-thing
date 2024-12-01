@@ -40,6 +40,12 @@ const NORMAL_BODY = {
     password: 'password',
     confirmPassword: 'password',
 };
+const INVALID_USERNAME_BODY = {
+    username: 'testuser@test.com',
+    email: 'test@test.com',
+    password: 'password',
+    confirmPassword: 'password',
+};
 const HEADERS = {
     'Content-Type': 'application/json',
 };
@@ -61,6 +67,19 @@ describe('POST /api/auth/register', () => {
 
         expect(response.status).toBe(400);
         expect(body.message).toBe('Missing required fields');
+    });
+    it("should return 400 if the username contains invalid characters", async () => {
+        const req = await createPostRequest(
+            'http://localhost:3000/api/auth/register',
+            INVALID_USERNAME_BODY,
+            HEADERS
+        );
+
+        const response = await POST(req);
+        const body = await response.json();
+
+        expect(response.status).toBe(400);
+        expect(body.message).toBe('Username can only contain letters and numbers');
     });
     it("should return 400 if passwords do not match", async () => {
         const req = await createPostRequest(
