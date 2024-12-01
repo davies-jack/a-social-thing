@@ -36,15 +36,15 @@ with the seed data, i have set up some relationships between users, and users li
 you can log in with the following credentials:
 
 ```
-email: `john@example.com`
-password: `password123`
+email: john@example.com
+password: password123
 ```
 
 or you can log in with jane's account:
 
 ```
-email: `jane@example.com`
-password: `password123`
+email: jane@example.com
+password: password123
 ```
 
 you can also sign up with your own account.
