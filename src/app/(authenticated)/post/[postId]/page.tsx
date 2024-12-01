@@ -1,10 +1,10 @@
 import Container from "@/components/Container";
 import CreateCommentForm from "@/components/post/CreateCommentForm";
 import LikesButton from "@/components/timeline/LikesButton";
-import { SinglePost } from "@/types/Post";
 import { formatDate } from "@/utils/date";
-import { getPost } from "@/utils/posts";
+import { createComment, getComments, getPost } from "@/utils/posts";
 import { likePost } from "@/utils/timeline";
+import { Comment } from "@/types/Comment";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import React from "react";
@@ -22,6 +22,14 @@ export default async function SinglePostPage({ params }: Props) {
   if (!post) {
     redirect("/dashboard");
   }
+
+  const comments = await getComments(postId);
+
+  const handleCreateComment = async (comment: string) => {
+    "use server";
+    await createComment(postId, post.userId, comment);
+    revalidatePath(`/post/${postId}`);
+  };
 
   return (
     <section>
@@ -45,22 +53,24 @@ export default async function SinglePostPage({ params }: Props) {
 
       <h2 className="text-headline-text text-lg font-bold mt-4">comments</h2>
       <ul className="mt-4 w-3/4 mx-auto">
-        <li>
-          <Container>
-            <p className="text-xs text-headline-text tracking-normal leading-tight break-all whitespace-pre-wrap max-w-full overflow-wrap-anywhere">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-              Quibusdam expedita rem accusamus ratione aliquam repellat
-              perspiciatis earum quaerat illum dolorem deserunt asperiores, sed
-              omnis rerum consequuntur voluptatum vero voluptates est.
-            </p>
-            <span className="mt-4 text-paragraph-text text-xs">
-              by @jack 14 hours ago
-            </span>
-          </Container>
-        </li>
+        {comments.map((comment: Comment, index: number) => {
+          const isFirst = index === 0;
+          return (
+            <li key={comment.id} className={`${isFirst ? "mt-0" : "mt-4"}`}>
+              <Container>
+                <p className="text-xs text-headline-text tracking-normal leading-tight break-all whitespace-pre-wrap max-w-full overflow-wrap-anywhere">
+                  {comment.comment}
+                </p>
+                <span className="mt-4 text-paragraph-text text-xs">
+                  by @{comment.user.username} {formatDate(comment.createdAt)}
+                </span>
+              </Container>
+            </li>
+          )
+        })}
       </ul>
 
-      <CreateCommentForm />
+      <CreateCommentForm handleCreateComment={handleCreateComment} />
     </section>
   );
 }
