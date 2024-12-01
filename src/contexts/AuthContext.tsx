@@ -4,7 +4,10 @@ import { createContext, useContext, useState } from 'react';
 
 interface AuthContextType {
     isAuthenticated: boolean;
-    login: (email: string, password: string) => Promise<void>;
+    login: (email: string, password: string) => Promise<{
+        message: string;
+        error: boolean;
+    }>;
     logout: () => Promise<void>;
 }
 
@@ -13,7 +16,10 @@ const AuthContext = createContext<AuthContextType>({} as AuthContextType);
 export function AuthProvider({ children }: { children: React.ReactNode }) {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-    const login = async (email: string, password: string) => {
+    const login = async (email: string, password: string) : Promise<{
+        message: string;
+        error: boolean;
+    }> => {
         const res = await fetch('/api/auth/login', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -21,10 +27,18 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         });
 
         if (!res.ok) {
-            throw new Error('Login failed');
+            const { message } = await res.json();
+            return {
+                message,
+                error: true,
+            }
         }
 
         setIsAuthenticated(true);
+        return {
+            message: "Login successful",
+            error: false,
+        }
     };
 
     const logout = async () => {
