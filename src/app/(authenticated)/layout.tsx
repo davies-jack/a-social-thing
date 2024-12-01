@@ -12,6 +12,10 @@ export default async function RootLayout({
     const userId = headerList.get("x-user-id") as string;
     const username = await usernameFromUserId(userId) as string;
 
+    const handleLogout = async () => {
+      console.log("logout");
+    }
+
     return (
       <AuthProvider>
         <main className="grid md:grid-cols-dashboard grid-cols-1 gap-4 items-start h-screen">
@@ -27,7 +31,7 @@ export default async function RootLayout({
               </div>
             </div>
             <Navigation username={username} />
-            <p className="text-paragraph-text text-xs text-center m-6 cursor-pointer">logout?</p>
+            <p className="text-paragraph-text text-xs text-center m-6 cursor-pointer" onClick={handleLogout}>logout?</p>
           </section>
           <div className="md:col-start-2 overflow-y-auto h-screen pt-6 px-0 md:px-24">
             {children}
