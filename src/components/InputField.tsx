@@ -18,7 +18,7 @@ export default function InputField({
       type={type}
       value={value}
       onChange={onChange}
-      className="w-full block text-white bg-bg-primary p-2 px-3 text-xs tracking-wide outline-none focus:outline-bg-button"
+      className="w-full block rounded-sm text-white bg-bg-primary p-2 px-3 text-xs tracking-wide outline-none focus:outline-bg-button"
       placeholder={placeholder}
     />
   );
