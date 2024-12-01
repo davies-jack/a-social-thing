@@ -1,6 +1,12 @@
-import { Posts } from "@prisma/client";
+export type Post = {
+  id: string;
+  status: string;
+  userId: string;
+  createdAt: Date;
+  updatedAt: Date;
+}
 
-export type SinglePost = Posts & {
+export type SinglePost = Post & {
   hasLiked: boolean;
   user: {
     username: string;
