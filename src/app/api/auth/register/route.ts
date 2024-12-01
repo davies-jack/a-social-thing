@@ -13,6 +13,13 @@ export async function POST(request: NextRequest) {
         );
     }
 
+    if (!/^[a-zA-Z0-9]+$/.test(username)) {
+        return NextResponse.json(
+            { message: 'Username can only contain letters and numbers', error: true },
+            { status: 400 }
+        );
+    }
+
     if (password !== confirmPassword) {
         return NextResponse.json(
             { message: 'Passwords do not match', error: true },
