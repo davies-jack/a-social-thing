@@ -10,19 +10,13 @@ describe('CreateCommentForm', () => {
   it('applies the correct default styling classes', () => {
     render(<CreateCommentForm handleCreateComment={() => Promise.resolve()} />);
 
-    const formElement = screen.getByRole('form');
-    const formElementChild = formElement.firstChild;
-
-    const outerDiv = formElementChild as HTMLDivElement;
-    expect(outerDiv).toHaveClass('flex flex-col items-center justify-center w-1/2 mx-auto');
-    
     const labelElement = screen.getByText('add a comment');
     expect(labelElement).toHaveClass('text-headline-text text-sm font-bold text-left');
 
     const textareaElement = screen.getByRole('textbox');
-    expect(textareaElement).toHaveClass('w-full h-24 p-2 rounded-md border border-border-secondary');
+    expect(textareaElement).toHaveClass('block resize-none w-full p-2 rounded-md border border-border-secondary');
 
     const buttonElement = screen.getByRole('button');
-    expect(buttonElement).toHaveClass('mt-4');
+    expect(buttonElement).toHaveClass('mt-4 self-end');
   });
 });
