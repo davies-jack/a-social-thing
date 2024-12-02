@@ -11,8 +11,6 @@ export function Navigation({ username }: NavigationProps) {
   const pathname = usePathname();
 
   const isOnOurProfile = pathname === `/profile/${username}`;
-  const isOnOtherProfile =
-    pathname?.startsWith("/profile/") && pathname !== `/profile/${username}`;
   const isOnDashboard = pathname === "/dashboard";
 
   return (
@@ -31,14 +29,6 @@ export function Navigation({ username }: NavigationProps) {
         ${isOnOurProfile ? "border border-bg-button" : ""}`}
         >
           your profile
-        </li>
-      </Link>
-      <Link href={`/profile/${username}`}>
-        <li
-          className={`p-2 px-4 rounded-md bg-bg-card cursor-pointer shadow-md font-bold
-        ${isOnOtherProfile ? "border border-bg-button" : ""}`}
-        >
-          profile view
         </li>
       </Link>
     </ul>
