@@ -19,8 +19,6 @@ describe('Container', () => {
     );
 
     const containerElement = screen.getByText('Test Content').parentElement;
-    expect(containerElement).toHaveClass('bg-bg-secondary');
-    expect(containerElement).toHaveClass('rounded-md');
-    expect(containerElement).toHaveClass('p-4');
+    expect(containerElement).toHaveClass('bg-bg-secondary rounded-md p-4');
   });
 });

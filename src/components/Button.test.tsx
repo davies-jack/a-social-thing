@@ -15,9 +15,7 @@ describe('Button', () => {
   it('applies the correct default styling classes', () => {
     render(<Button label="Click me" />);
     const button = screen.getByRole('button');
-    expect(button).toHaveClass('self-end');
-    expect(button).toHaveClass('px-4');
-    expect(button).toHaveClass('py-2');
+    expect(button).toHaveClass('self-end px-4 py-2');
   });
 
   it('applies custom className when provided', () => {

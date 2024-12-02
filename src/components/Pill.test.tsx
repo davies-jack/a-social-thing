@@ -10,10 +10,7 @@ describe('Pill', () => {
   it('renders with the correct default styling classes', () => {
     render(<Pill>Test Children</Pill>);
     const pillElement = screen.getByText('Test Children');
-    expect(pillElement).toHaveClass('rounded-md');
-    expect(pillElement).toHaveClass('bg-bg-card');
-    expect(pillElement).toHaveClass('border-2');
-    expect(pillElement).toHaveClass('border-bg-primary');
+    expect(pillElement).toHaveClass('rounded-md bg-bg-card border-2 border-bg-primary');
   });
 
   it('renders with the correct custom styling classes', () => {

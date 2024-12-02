@@ -10,8 +10,7 @@ describe('Error', () => {
   it('applies the correct default styling classes', () => {
     render(<Error message="Test Error" />);
     const errorElement = screen.getByText('Test Error!');
-    expect(errorElement).toHaveClass('bg-red-700');
-    expect(errorElement).toHaveClass('text-xs');
+    expect(errorElement).toHaveClass('bg-red-700 text-xs');
   });
 
   it('applies custom className when provided', () => {

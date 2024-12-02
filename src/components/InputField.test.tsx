@@ -27,7 +27,6 @@ describe('InputField', () => {
   it('renders with the correct default styling classes', () => {
     render(<InputField type="text" value="" onChange={() => {}} placeholder="Test Placeholder" />);
     const inputElement = screen.getByPlaceholderText('Test Placeholder');
-    expect(inputElement).toHaveClass('w-full');
-    expect(inputElement).toHaveClass('block');
+    expect(inputElement).toHaveClass('w-full block');
   });
 });
