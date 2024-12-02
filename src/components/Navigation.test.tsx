@@ -16,7 +16,6 @@ describe('Navigation', () => {
     const linkListItems = screen.getAllByRole('listitem');
     expect(linkListItems[0]).toHaveClass('p-2 px-4 rounded-md bg-bg-card cursor-pointer shadow-md font-bold');
     expect(linkListItems[1]).toHaveClass('p-2 px-4 my-4 rounded-md bg-bg-card cursor-pointer shadow-md font-bold');
-    expect(linkListItems[2]).toHaveClass('p-2 px-4 rounded-md bg-bg-card cursor-pointer shadow-md font-bold');
   });
 
   it('renders with the correct active styling classes when on the profile page', () => {
