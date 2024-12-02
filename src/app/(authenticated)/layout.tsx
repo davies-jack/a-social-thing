@@ -31,7 +31,7 @@ export default async function RootLayout({
               </div>
             </div>
             <Navigation username={username} />
-            <p className="text-paragraph-text text-xs text-center m-6 cursor-pointer" onClick={handleLogout}>logout?</p>
+            <p className="text-paragraph-text text-xs text-center m-6 cursor-pointer" >logout?</p>
           </section>
           <div className="md:col-start-2 overflow-y-auto h-screen pt-6 px-0 md:px-24">
             {children}
