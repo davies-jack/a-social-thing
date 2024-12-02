@@ -4,7 +4,7 @@ type Props = {
     label: string;
     className?: string;
     disabled?: boolean;
-    onClick?: () => Promise<void>;
+    onClick?: (e: React.FormEvent<HTMLButtonElement>) => Promise<void>;
 }
 
 export default function Button({ label, className, disabled, onClick }: Props) {
