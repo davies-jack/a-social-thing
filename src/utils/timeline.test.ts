@@ -1,6 +1,5 @@
 import { getTimeline, isLiked, likePost, getLikeAmount } from './timeline';
 import prisma from '@/utils/db';
-import { AppErrors } from '@/lib/errors';
 
 jest.mock('@/utils/db', () => ({
     __esModule: true,
