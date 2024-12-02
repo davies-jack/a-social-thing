@@ -6,6 +6,7 @@ import { redirect } from "next/navigation";
 import CreatePostForm from "@/components/timeline/CreatePostForm";
 import TimelinePost from "@/components/timeline/TimelinePost";
 import { SinglePost } from "@/types/Post";
+import { getComments } from "@/utils/posts";
 
 export default async function DashboardPage() {
   const headersList = await headers();
@@ -20,6 +21,7 @@ export default async function DashboardPage() {
     timeline.map(async (post) => ({
       ...post,
       hasLiked: await isLiked(post.id, userId),
+      commentAmount: (await getComments(post.id)).length,
     }))
   )
 
@@ -40,8 +42,7 @@ export default async function DashboardPage() {
       <section>
         <CreatePostForm onSubmit={postStatus} />
         <section className="flex flex-col items-center">
-          <h2 className="text-headline-text text-lg font-bold">your timeline</h2>
-          <ul className="mt-4 w-full lg:w-3/4">
+          <ul className="mt-4 w-full">
             {timeline.length === 0 && <li>no posts yet</li>}
             {prefetchedPosts.map((post: SinglePost) => {
               const toggleLikePost = async () => {
@@ -56,6 +57,7 @@ export default async function DashboardPage() {
                   post={post}
                   hasLiked={post.hasLiked}
                   toggleLikePost={toggleLikePost}
+                  commentAmount={post.commentAmount}
                 />
               );
             })}
