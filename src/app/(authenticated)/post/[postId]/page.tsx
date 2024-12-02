@@ -16,7 +16,7 @@ type Props = {
 };
 
 export default async function SinglePostPage({ params }: Props) {
-  const { postId } = params;
+  const { postId } = await params;
 
   const post = await getPost(postId);
   if (!post) {
@@ -51,8 +51,7 @@ export default async function SinglePostPage({ params }: Props) {
         />
       </Container>
 
-      <h2 className="text-headline-text text-lg font-bold mt-4">comments</h2>
-      <ul className="mt-4 w-3/4 mx-auto">
+      <ul className="mt-12 w-3/4 mx-auto">
         {comments.map((comment: Comment, index: number) => {
           const isFirst = index === 0;
           return (
