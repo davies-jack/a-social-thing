@@ -148,7 +148,8 @@ describe('timeline utils', () => {
                 createdAt: new Date(),
                 userId: '123',
                 user: { username: 'testuser' },
-                likes: []
+                likes: [],
+                comments: []
             }];
 
             const mockFollowing = [
@@ -161,7 +162,8 @@ describe('timeline utils', () => {
                 createdAt: new Date(),
                 userId: '456',
                 user: { username: 'followeduser' },
-                likes: []
+                likes: [],
+                comments: []
             }];
 
             (mockPrisma.posts.findMany as jest.Mock)
