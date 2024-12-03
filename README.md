@@ -25,7 +25,7 @@ to install, firstly clone the repo, then run `npm install` to install the depend
 
 copy the `.env.example` file to `.env` and supply your own values.
 
-with a postgresql database running, run `npx prisma migrate dev` to create the schema and seed the database.
+with a postgresql database running (i use [postgres.app](https://postgresapp.com/)), run `npx prisma migrate dev` to create the schema and seed the database.
 
 lastly, run `npm run dev` to start the development server. you can navigate to `localhost:3000` to view the app.
 
