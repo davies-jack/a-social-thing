@@ -62,7 +62,7 @@ function RegisterForm({
         </label>
         <InputField
           type="email"
-          value={email || ""}
+          value={email}
           onChange={(e) => setEmail(e.target.value)}
           placeholder="john@example.com"
         />
@@ -75,7 +75,7 @@ function RegisterForm({
         </label>
         <InputField
           type="text"
-          value={username || ""}
+          value={username}
           onChange={(e) => setUsername(e.target.value)}
           placeholder="john"
         />
