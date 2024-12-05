@@ -12,14 +12,10 @@ export default async function RootLayout({
     const userId = headerList.get("x-user-id") as string;
     const username = await usernameFromUserId(userId) as string;
 
-    const handleLogout = async () => {
-      console.log("logout");
-    }
-
     return (
       <AuthProvider>
         <main className="grid md:grid-cols-dashboard grid-cols-1 gap-4 items-start h-screen">
-          <section className="pt-6 border-r-none md:border-r-2 md:border-r-bg-button block md:fixed md:w-[320px] h-auto md:h-screen px-6 bg-bg-secondary">
+          <section className="pt-6 border-r-none md:border-r-2 md:border-r-bg-button block md:fixed md:w-[320px] h-auto md:h-screen px-6">
             <div className="bg-bg-card rounded-md p-4 mb-6">
               <h1 className="text-headline-text text-lg font-bold flex flex-row gap-2">
                 <span className="text-paragraph-text">@</span>
@@ -33,7 +29,7 @@ export default async function RootLayout({
             <Navigation username={username} />
             <p className="text-paragraph-text text-xs text-center m-6 cursor-pointer" >logout?</p>
           </section>
-          <div className="md:col-start-2 overflow-y-auto h-screen pt-6 px-0 md:px-24">
+          <div className="md:col-start-2 overflow-y-auto h-screen pt-6 px-0 md:px-6 lg:px-24">
             {children}
           </div>
         </main>
