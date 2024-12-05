@@ -9,7 +9,7 @@ export default {
   theme: {
     extend: {
       gridTemplateColumns: {
-        'dashboard': 'minmax(300px, .4fr) minmax(500px, 1fr)',
+        'dashboard': '300px 1fr',
       },
       colors: {
         background: "var(--background)",
