@@ -14,5 +14,6 @@ export type SinglePost = Post & {
   likes: {
     userId: string;
   }[];
+  commentAmount: number;
 };
 
