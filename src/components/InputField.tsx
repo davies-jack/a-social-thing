@@ -19,7 +19,7 @@ export default function InputField({
       onChange={onChange}
       className="w-full block rounded-sm text-white bg-bg-primary p-2 px-3 text-xs tracking-wide outline-none focus:outline-bg-button"
       placeholder={placeholder}
-      {...(value && { value })}
+      value={value || ""}
     />
   );
 }
