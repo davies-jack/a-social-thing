@@ -34,7 +34,7 @@ export default async function DashboardPage() {
       return;
     }
 
-    await createPost(userId, status);
+    await createPost({ userId, status });
     revalidatePath("/dashboard");
   };
 
