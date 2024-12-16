@@ -16,7 +16,7 @@ type Props = {
 };
 
 export default async function SinglePostPage({ params }: Props) {
-  const { postId } = await params;
+  const { postId } = params;
 
   const post = await getPost(postId);
   if (!post) {
