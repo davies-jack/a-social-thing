@@ -57,7 +57,7 @@ export const ErrorStory: Story = {
   args: {
     children: (
       <>
-        There seems to have been an error. <strong>Sit back and relax, we're on it.</strong>
+        There seems to have been an error. <strong>Sit back and relax, we&apos;re on it.</strong>
       </>
     ),
     type: "error",
