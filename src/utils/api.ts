@@ -18,7 +18,6 @@ export const post = async (url: string, options?: RequestInit) => {
         ...options?.headers,
       },
     });
-    console.log(response);
     const json = await response.json();
     return json;
   } catch (error) {
