@@ -15,14 +15,12 @@ export default function Error({ children, type = 'info' }: Props) {
   return (
     <div className={`
         ${bgColorLookup[type]}
-        text-black text-base lowercase
+        text-black text-base text-xs lowercase
         rounded-md px-5 py-3
         flex flex-col gap-1
         shadow-md
     `}>
-        <span className="text-xs text-black">
-          {children}
-        </span>
+        {children}
     </div>
   )
 }
