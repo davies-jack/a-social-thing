@@ -4,15 +4,15 @@ import { redirect } from "next/navigation";
 import React from "react";
 
 type Props = {
-  params: {
+  params: Promise<{
     username: string;
-  };
+  }>;
 };
 
 export default async function FollowersPage({ params }: Props) {
   const headersList = await headers();
   const userId = headersList.get("x-user-id") as string;
-  const usernameFromParams = params.username.trim();
+  const usernameFromParams = (await params).username.trim();
   const userIdFromParams = await userIdFromUsername(usernameFromParams);
   if (!userIdFromParams) {
     redirect("/dashboard");

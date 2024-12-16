@@ -10,13 +10,13 @@ import { redirect } from "next/navigation";
 import React from "react";
 
 type Props = {
-  params: {
+  params: Promise<{
     postId: string;
-  };
+  }>;
 };
 
 export default async function SinglePostPage({ params }: Props) {
-  const { postId } = params;
+  const { postId } = await params;
 
   const post = await getPost(postId);
   if (!post) {
