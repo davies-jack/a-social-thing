@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import Button from "../Button";
+import Button from "@/components/atoms/Button";
 
 type Props = {
   handleCreateComment: (comment: string) => Promise<void>;
