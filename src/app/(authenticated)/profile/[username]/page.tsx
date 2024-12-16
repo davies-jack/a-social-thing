@@ -1,4 +1,4 @@
-import Pill from "@/components/Pill";
+import Pill from "@/components/atoms/Pill/";
 import { formatDate } from "@/utils/date";
 import prisma from "@/utils/db";
 import { getPosts } from "@/utils/posts";
@@ -8,15 +8,16 @@ import { headers } from "next/headers";
 import React from "react";
 
 type Props = {
-  params: {
+  params: Promise<{
     username: string;
-  };
+  }>;
 };
 
 export default async function ProfilePage({ params }: Props) {
   const headersList = await headers();
   const userId = headersList.get("x-user-id");
-  const profileUserId = await userIdFromUsername(params.username);
+  const { username } = await params;
+  const profileUserId = await userIdFromUsername(username);
 
   let following = false;
   let amountOfFollowers = 0;
@@ -58,7 +59,7 @@ export default async function ProfilePage({ params }: Props) {
         data: { followerId: userId, followingId: profileUserId },
       });
     }
-    revalidatePath(`/profile/${params.username}`);
+    revalidatePath(`/profile/${username}`);
   };
 
   const posts = await getPosts(profileUserId);
@@ -66,7 +67,7 @@ export default async function ProfilePage({ params }: Props) {
   return (
     <main>
       <div className="bg-bg-secondary p-6 rounded-md">
-        <h1 className="text-headline-text text-lg font-bold">{params.username}</h1>
+        <h1 className="text-headline-text text-lg font-bold">{username}</h1>
         <div className="mt-1 flex flex-row gap-2 text-sm">
           <span className="hover:text-headline-text hover:cursor-pointer">
             {amountOfFollowers} followers

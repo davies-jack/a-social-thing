@@ -32,6 +32,7 @@ export const getPosts = async (userId: string): Promise<PostWithUser[]> => {
           },
         },
         likes: true,
+        comments: true,
       },
     });
 
@@ -58,6 +59,7 @@ export const getPost = async (postId: string): Promise<PostWithUser> => {
           },
         },
         likes: true,
+        comments: true,
       },
     });
     if (!post) {

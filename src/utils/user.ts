@@ -1,6 +1,5 @@
 import prisma from "@/utils/db";
 import { AppErrors } from "@/lib/errors";
-import { User } from "@prisma/client";
 
 export const userIdFromUsername = async (username: string): Promise<string | null> => {
   try {
