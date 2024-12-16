@@ -1,21 +1,21 @@
 import { render, screen } from '@testing-library/react';
-import Error from '.';
+import Alert from '.';
 
-describe('Error', () => {
+describe('Alert', () => {
   it('renders with the provided message', () => {
-    render(<Error message="Test Error" />);
+    render(<Alert type="error">Test Error!</Alert>);
     expect(screen.getByText('Test Error!')).toBeInTheDocument();
   });
 
   it('applies the correct default styling classes', () => {
-    render(<Error message="Test Error" />);
+    render(<Alert type="error">Test Error!</Alert>);
     const errorElement = screen.getByText('Test Error!');
-    expect(errorElement).toHaveClass('bg-red-700 text-xs');
+    expect(errorElement).toHaveClass('bg-error-red text-xs');
   });
 
   it('applies custom className when provided', () => {
-    render(<Error message="Test Error" className="custom-class" />);
+    render(<Alert type="error">Test Error!</Alert>);
     const errorElement = screen.getByText('Test Error!');
-    expect(errorElement).toHaveClass('custom-class');
+    expect(errorElement).toHaveClass('bg-error-red text-xs');
   });
 });

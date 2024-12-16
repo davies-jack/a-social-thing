@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import Error from ".";
+import Alert from ".";
 
-const meta: Meta<typeof Error> = {
-  title: "Atoms/Error",
-  component: Error,
+const meta: Meta<typeof Alert> = {
+  title: "Atoms/Alert",
+  component: Alert,
   parameters: {
     layout: "centered",
   },
@@ -18,16 +18,13 @@ const meta: Meta<typeof Error> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof Error>;
+type Story = StoryObj<typeof Alert>;
 
 export const Default: Story = {
   name: "[Info] - Default",
   args: {
-    children: (
-      <>
-        <strong>Sit back and relax, we're on it.</strong>
-      </>
-    ),
+    children: "This is an info alert",
+    type: "info",
   },
 };
 
