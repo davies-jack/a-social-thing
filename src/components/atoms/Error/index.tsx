@@ -8,7 +8,9 @@ type Props = {
 export default function Error({ message, className }: Props) {
   return (
     <div className={`
-        bg-red-700 text-white rounded-md py-1 px-2 text-xs lowercase font-bold
+        bg-red-700
+        text-white text-xs lowercase font-bold
+        rounded-md py-1 px-2
         ${className}
     `}>
         {message}!

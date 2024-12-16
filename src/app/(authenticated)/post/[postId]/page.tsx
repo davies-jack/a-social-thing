@@ -1,4 +1,4 @@
-import Container from "@/components/Container";
+import Container from "@/components/atoms/Container";
 import CreateCommentForm from "@/components/post/CreateCommentForm";
 import LikesButton from "@/components/timeline/LikesButton";
 import { formatDate } from "@/utils/date";

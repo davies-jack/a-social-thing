@@ -1,8 +1,8 @@
 "use client";
 
 import Button from "@/components/Button";
-import Error from "@/components/Error";
-import InputField from "@/components/InputField";
+import Error from "@/components/atoms/Error/Error";
+import InputField from "@/h/InputField";
 import Pill from "@/components/Pill";
 import Link from "next/link";
 import React, { FormEvent, useState } from "react";

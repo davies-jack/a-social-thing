@@ -2,7 +2,8 @@ import { SinglePost } from "@/types/Post";
 import Link from "next/link";
 import LikesButton from "@/components/timeline/LikesButton";
 import { formatDate } from "@/utils/date";
-import Pill from "../Pill";
+import Pill from "@/components/atoms/Pill";
+import Container from "../atoms/Container";
 
 type Props = {
   post: SinglePost;
@@ -26,13 +27,8 @@ export default function TimelinePost({
   const { username } = user;
 
   return (
-    <li className="flex flex-col items-start my-4 p-4 bg-bg-secondary transition-colors duration-200 text-sm rounded-md shadow-sm hover:shadow-md">
-      <span className="username text-headline-text flex flex-row items-center gap-2">
-        <span className="text-paragraph-text">@</span>
-        <Link href={`/profile/${username}`}>
-          <span className="text-headline-text font-bold">{username}</span>
-        </Link>
-      </span>
+    <li className="flex flex-col items-start">
+      <Container title={username} titleLevel="h2" spacing={{ marginTop: "4" }}>
       <span className="text-headline-text tracking-normal leading-tight mt-1 mb-2 block break-all whitespace-pre-wrap max-w-full overflow-wrap-anywhere">
         {status}
       </span>
@@ -64,6 +60,7 @@ export default function TimelinePost({
 {formattedDate}
         </li>
       </ul>
+      </Container>
     </li>
   );
 }

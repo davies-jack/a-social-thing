@@ -1,8 +1,8 @@
 "use client";
 
-import Button from "@/components/Button";
-import Error from "@/components/Error";
-import InputField from "@/components/InputField";
+import Button from "@/components/atoms/Button";
+import Error from "@/components/atoms/Error";
+import InputField from "@/components/atoms/InputField";
 import { useAuth } from "@/contexts/AuthContext";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
