@@ -45,8 +45,8 @@ jobs:
       env:
         DATABASE_URL: "postgresql://postgres:postgres@localhost:5432/test_db"
 
-    - name: Build Next.js
-      run: npm run build
+    - name: Run Next.js
+      run: npm run dev
 
     - name: Run tests
       run: npm test
