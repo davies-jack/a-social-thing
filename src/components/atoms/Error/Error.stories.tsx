@@ -1,33 +1,72 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import Error from '.';
+import type { Meta, StoryObj } from "@storybook/react";
+import Error from ".";
 
 const meta: Meta<typeof Error> = {
-  title: 'Atoms/Error',
+  title: "Atoms/Error",
   component: Error,
   parameters: {
-    layout: 'centered',
+    layout: "centered",
   },
-  tags: ['autodocs'],
+  tags: ["autodocs"],
+  decorators: [
+    (Story) => (
+      <div className="w-screen px-28">
+        <Story />
+      </div>
+    ),
+  ],
 };
 
 export default meta;
 type Story = StoryObj<typeof Error>;
 
 export const Default: Story = {
+  name: "[Info] - Default",
   args: {
-    message: 'Something went wrong',
+    children: (
+      <>
+        <strong>Sit back and relax, we're on it.</strong>
+      </>
+    ),
   },
 };
 
-export const WithCustomClass: Story = {
+export const Warning: Story = {
+  name: "[Warning] - Long Message",
   args: {
-    message: 'Custom styled error',
-    className: 'bg-blue-500',
+    children: (
+      <p>
+        Est veniam magna Lorem laborum qui occaecat dolor sint officia anim
+        fugiat. Amet aliqua amet esse mollit et nisi ex eu officia laboris esse
+        eiusmod. Adipisicing excepteur qui officia aute ipsum. Veniam occaecat
+        exercitation cillum deserunt culpa aliquip. Laboris Lorem enim veniam ea
+        magna. Reprehenderit reprehenderit adipisicing fugiat eu ut ex sunt anim
+        ad elit magna. Tempor nisi qui ad ad. Duis exercitation veniam
+        adipisicing anim occaecat ex sit reprehenderit sunt exercitation laboris
+        ad veniam reprehenderit. Fugiat laborum adipisicing anim pariatur sunt
+        culpa veniam incididunt sunt. Fugiat nostrud duis minim consequat eu
+        velit minim velit elit aliqua dolor. Exercitation commodo magna
+        adipisicing elit ullamco nostrud aliqua non voluptate. Sint in ut
+        pariatur duis cillum anim. Consectetur occaecat veniam proident anim
+        adipisicing ullamco irure fugiat irure. Quis in do ipsum sit sit aute
+        fugiat enim magna enim id dolor do. Labore est sit culpa officia in
+        tempor enim elit sit deserunt. Enim eiusmod consequat excepteur mollit
+        voluptate laboris proident incididunt duis nisi.
+      </p>
+    ),
+    type: "warning",
   },
 };
 
-export const LongMessage: Story = {
+export const ErrorStory: Story = {
+  name: "[Error] - Default",
   args: {
-    message: 'This is a very long error message that demonstrates how the component handles lengthy text',
+    children: (
+      <>
+        There seems to have been an error.{" "}
+        <strong>Sit back and relax, we're on it.</strong>
+      </>
+    ),
+    type: "error",
   },
 };
