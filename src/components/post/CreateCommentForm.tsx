@@ -17,14 +17,11 @@ export default function CreateCommentForm({ handleCreateComment }: Props) {
     await handleCreateComment(comment);
     setComment("");
     setIsLoading(false);
-  }
+  };
   return (
     <div className="mt-4">
       <div>
-        <label
-          htmlFor="comment"
-          className="text-headline-text text-sm font-bold text-left"
-        >
+        <label htmlFor="comment" className="text-headline-text text-sm font-bold text-left">
           add a comment
         </label>
         <textarea
@@ -34,12 +31,7 @@ export default function CreateCommentForm({ handleCreateComment }: Props) {
           onChange={(e) => setComment(e.target.value)}
         ></textarea>
       </div>
-      <Button
-        label="post"
-        className="mt-4 self-end"
-        onClick={handleSubmit}
-        disabled={isLoading}
-      />
+      <Button label="post" className="mt-4 self-end" onClick={handleSubmit} disabled={isLoading} />
     </div>
   );
 }

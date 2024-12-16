@@ -1,7 +1,7 @@
 export type Like = {
-    id: string;
-    userId: string;
-    postId: string;
-    createdAt: Date;
-    updatedAt: Date;
-}
+  id: string;
+  userId: string;
+  postId: string;
+  createdAt: Date;
+  updatedAt: Date;
+};

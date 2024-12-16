@@ -42,16 +42,13 @@ function RegisterForm({
               ${error ? "pb-0" : "pb-3"}
               `}
         >
-          <span className="text-paragraph-text font-normal">register to</span>{" "}
-          a-social
+          <span className="text-paragraph-text font-normal">register to</span> a-social
         </h1>
         {error && <Error message={error} className="my-2" />}
 
         {success && (
           <Pill>
-            <p className="font-bold text-green-700">
-              your account has been successfully created!
-            </p>
+            <p className="font-bold text-green-700">your account has been successfully created!</p>
           </Pill>
         )}
         <label

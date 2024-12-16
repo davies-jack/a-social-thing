@@ -15,7 +15,7 @@ export default async function DashboardPage() {
   if (!userId) {
     redirect("/login");
   }
-  
+
   const timeline = await getTimeline(userId);
   const prefetchedPosts = await Promise.all(
     timeline.map(async (post) => ({
@@ -23,46 +23,46 @@ export default async function DashboardPage() {
       hasLiked: await isLiked(post.id, userId),
       commentAmount: (await getComments(post.id)).length,
     }))
-  )
+  );
 
   const postStatus = async (formData: FormData) => {
     "use server";
     let status = formData.get("status") as string;
     status = status.trim();
-    
+
     if (status.length > 175) {
       return;
     }
-    
+
     await createPost(userId, status);
     revalidatePath("/dashboard");
   };
 
   return (
-      <section>
-        <CreatePostForm onSubmit={postStatus} />
-        <section className="flex flex-col items-center">
-          <ul className="mt-4 w-full">
-            {timeline.length === 0 && <li>no posts yet</li>}
-            {prefetchedPosts.map((post: SinglePost) => {
-              const toggleLikePost = async () => {
-                "use server";
-                await likePost(post.id, userId);
-                revalidatePath("/dashboard");
-              };
+    <section>
+      <CreatePostForm onSubmit={postStatus} />
+      <section className="flex flex-col items-center">
+        <ul className="mt-4 w-full">
+          {timeline.length === 0 && <li>no posts yet</li>}
+          {prefetchedPosts.map((post: SinglePost) => {
+            const toggleLikePost = async () => {
+              "use server";
+              await likePost(post.id, userId);
+              revalidatePath("/dashboard");
+            };
 
-              return (
-                <TimelinePost
-                  key={post.id}
-                  post={post}
-                  hasLiked={post.hasLiked}
-                  toggleLikePost={toggleLikePost}
-                  commentAmount={post.commentAmount}
-                />
-              );
-            })}
-          </ul>
-        </section>
-        </section>
+            return (
+              <TimelinePost
+                key={post.id}
+                post={post}
+                hasLiked={post.hasLiked}
+                toggleLikePost={toggleLikePost}
+                commentAmount={post.commentAmount}
+              />
+            );
+          })}
+        </ul>
+      </section>
+    </section>
   );
 }

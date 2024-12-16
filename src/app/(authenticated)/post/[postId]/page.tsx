@@ -65,7 +65,7 @@ export default async function SinglePostPage({ params }: Props) {
                 </span>
               </Container>
             </li>
-          )
+          );
         })}
       </ul>
 

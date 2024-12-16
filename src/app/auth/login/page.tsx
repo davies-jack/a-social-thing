@@ -35,8 +35,7 @@ function LoginForm({
             ${error ? "pb-0" : "pb-3"}
             `}
         >
-          <span className="text-paragraph-text font-normal">login to</span>{" "}
-          a-social
+          <span className="text-paragraph-text font-normal">login to</span> a-social
         </h1>
         {error && <Alert type="error">{error}</Alert>}
 
@@ -116,10 +115,8 @@ export default function LoginPage() {
 
       <span className="text-paragraph-text text-sm mt-4">
         don&apos;t have an account?{" "}
-        <Link href="/auth/register"> 
-          <span className="cursor-pointer">
-           register here
-          </span>
+        <Link href="/auth/register">
+          <span className="cursor-pointer">register here</span>
         </Link>
       </span>
     </div>

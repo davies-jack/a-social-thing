@@ -4,7 +4,7 @@ export type Post = {
   userId: string;
   createdAt: Date;
   updatedAt: Date;
-}
+};
 
 export type SinglePost = Post & {
   hasLiked: boolean;
@@ -16,4 +16,3 @@ export type SinglePost = Post & {
   }[];
   commentAmount: number;
 };
-

@@ -1,12 +1,12 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import Pill from './index';
+import type { Meta, StoryObj } from "@storybook/react";
+import Pill from "./index";
 
 const meta: Meta<typeof Pill> = {
-  title: 'Atoms/Pill',
+  title: "Atoms/Pill",
   component: Pill,
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   parameters: {
-    layout: 'centered',
+    layout: "centered",
   },
 };
 
@@ -15,20 +15,20 @@ type Story = StoryObj<typeof Pill>;
 
 export const Default: Story = {
   args: {
-    children: 'Default Pill',
+    children: "Default Pill",
   },
 };
 
 export const CustomStyle: Story = {
   args: {
-    children: 'Custom Styled Pill',
-    className: 'bg-blue-500 text-white',
+    children: "Custom Styled Pill",
+    className: "bg-blue-500 text-white",
   },
 };
 
 export const LongText: Story = {
   args: {
-    children: 'This is a pill with much longer text content',
+    children: "This is a pill with much longer text content",
   },
 };
 
@@ -55,6 +55,6 @@ export const PillGroup: Story = {
     ),
   ],
   args: {
-    children: 'Primary Tag',
+    children: "Primary Tag",
   },
 };

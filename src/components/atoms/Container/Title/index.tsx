@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 
 type Props = {
   value: string;
@@ -8,12 +8,14 @@ type Props = {
 export default function ContainerTitle({ value, level = "h2" }: Props) {
   const Title = level;
   return (
-    <Title className="
+    <Title
+      className="
       text-base text-headline-text font-bold
       break-words
       leading-4
       mb-2
-    ">
+    "
+    >
       {value}
     </Title>
   );

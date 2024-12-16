@@ -36,7 +36,8 @@ export const H3: Story = {
 
 export const LongTitle: Story = {
   args: {
-    value: "This is a very long title that should demonstrate how the component handles text wrapping and overflow situations",
+    value:
+      "This is a very long title that should demonstrate how the component handles text wrapping and overflow situations",
     level: "h2",
   },
 };

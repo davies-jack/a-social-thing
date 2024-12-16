@@ -10,17 +10,12 @@ type Props = {
     marginBottom?: string;
     marginLeft?: string;
     marginRight?: string;
-  }
+  };
 
   children: React.ReactNode;
 };
 
-export default function Container({
-  title,
-  titleLevel = "h1",
-  children,
-  spacing,
-}: Props) {
+export default function Container({ title, titleLevel = "h1", children, spacing }: Props) {
   const { marginTop, marginBottom, marginLeft, marginRight } = spacing || {};
   return (
     <div
@@ -37,9 +32,7 @@ export default function Container({
         ${marginRight ? `mr-${marginRight}` : ""}
     `}
     >
-      {title && (
-        <ContainerTitle value={title} level={titleLevel} />
-      )}
+      {title && <ContainerTitle value={title} level={titleLevel} />}
       <div className="text-sm leading-5 tracking-tight text-paragraph-text">{children}</div>
     </div>
   );

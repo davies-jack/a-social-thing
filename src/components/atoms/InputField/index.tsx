@@ -21,7 +21,9 @@ export default function InputField({
 }: Props) {
   return (
     <div>
-      <label htmlFor={id} className="text-paragraph-text text-xs mb-1 font-bold">{label}</label>
+      <label htmlFor={id} className="text-paragraph-text text-xs mb-1 font-bold">
+        {label}
+      </label>
       <input
         id={id}
         className="w-full block rounded-sm text-white bg-bg-primary p-2 px-3 text-xs tracking-wide outline-none focus:outline-bg-button"

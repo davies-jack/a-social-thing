@@ -66,9 +66,7 @@ export default async function ProfilePage({ params }: Props) {
   return (
     <main>
       <div className="bg-bg-secondary p-6 rounded-md">
-        <h1 className="text-headline-text text-lg font-bold">
-          {params.username}
-        </h1>
+        <h1 className="text-headline-text text-lg font-bold">{params.username}</h1>
         <div className="mt-1 flex flex-row gap-2 text-sm">
           <span className="hover:text-headline-text hover:cursor-pointer">
             {amountOfFollowers} followers
@@ -101,19 +99,13 @@ export default async function ProfilePage({ params }: Props) {
           if (post.likes.length === 0 || post.likes.length > 1) {
             likesLabel = (
               <span className="text-paragraph-text">
-                <strong className="text-headline-text">
-                  {post.likes.length}
-                </strong>{" "}
-                likes
+                <strong className="text-headline-text">{post.likes.length}</strong> likes
               </span>
             );
           } else {
             likesLabel = (
               <span className="text-paragraph-text">
-                <strong className="text-headline-text">
-                  {post.likes.length}
-                </strong>{" "}
-                like
+                <strong className="text-headline-text">{post.likes.length}</strong> like
               </span>
             );
           }
@@ -121,9 +113,7 @@ export default async function ProfilePage({ params }: Props) {
           return (
             <li
               key={post.id}
-              className={`bg-bg-secondary p-6 ${
-                isFirst ? "mt-0" : "mt-4"
-              } rounded-md`}
+              className={`bg-bg-secondary p-6 ${isFirst ? "mt-0" : "mt-4"} rounded-md`}
             >
               <span>{post.status}</span>
               <span className="block font-bold text-paragraph-text text-xs mt-2">

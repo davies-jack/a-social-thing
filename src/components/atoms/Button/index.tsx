@@ -1,17 +1,17 @@
-import React from 'react'
+import React from "react";
 
 type Props = {
-    label: string;
-    className?: string;
-    disabled?: boolean;
-    onClick?: (e: React.FormEvent<HTMLButtonElement>) => Promise<void>;
-}
+  label: string;
+  className?: string;
+  disabled?: boolean;
+  onClick?: (e: React.FormEvent<HTMLButtonElement>) => Promise<void>;
+};
 
 export default function Button({ label, className, disabled, onClick }: Props) {
   return (
     <button
-        type="submit"
-        className={`
+      type="submit"
+      className={`
             self-end
             px-4 py-2
             border-2 border-bg-button rounded-sm
@@ -22,10 +22,10 @@ export default function Button({ label, className, disabled, onClick }: Props) {
             ${className}
             disabled:opacity-50 disabled:cursor-not-allowed
         `}
-        disabled={disabled}
-        onClick={onClick}
+      disabled={disabled}
+      onClick={onClick}
     >
-        {disabled ? "loading..." : label}
+      {disabled ? "loading..." : label}
     </button>
-  )
+  );
 }

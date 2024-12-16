@@ -3,9 +3,7 @@
 import { useState } from "react";
 import Button from "@/components/atoms/Button";
 type Props = {
-  onSubmit: (
-    formData: FormData,
-  ) => Promise<void>;
+  onSubmit: (formData: FormData) => Promise<void>;
 };
 
 export default function CreatePostForm({ onSubmit }: Props) {
@@ -32,9 +30,7 @@ export default function CreatePostForm({ onSubmit }: Props) {
       className="w-full flex flex-col gap-2 items-start"
     >
       {noContentError && (
-        <p className="text-red-500 text-sm m-0 p-0 font-bold">
-          please enter a post.
-        </p>
+        <p className="text-red-500 text-sm m-0 p-0 font-bold">please enter a post.</p>
       )}
       {post.length > 175 && (
         <p className="text-red-500 text-sm m-0 p-0 font-bold">

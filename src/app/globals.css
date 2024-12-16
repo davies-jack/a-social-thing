@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -33,5 +33,5 @@
 body {
   color: var(--paragraph-text);
   background: #202020;
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
 }

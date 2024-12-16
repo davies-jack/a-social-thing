@@ -9,12 +9,7 @@ type Props = {
   className?: string;
 };
 
-export default function LikesButton({
-  likeAmount,
-  hasLiked,
-  toggleLikePost,
-  className,
-}: Props) {
+export default function LikesButton({ likeAmount, hasLiked, toggleLikePost, className }: Props) {
   return (
     <div
       className={`
