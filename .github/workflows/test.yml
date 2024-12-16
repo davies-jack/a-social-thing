@@ -48,9 +48,6 @@ jobs:
     - name: Build Next.js
       run: npm run build
 
-    - name: Run Next.js
-      run: npm run start
-
     - name: Run tests
       run: npm test
       env:
