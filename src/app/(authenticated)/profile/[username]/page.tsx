@@ -1,4 +1,4 @@
-import Pill from "@/components/Pill";
+import Pill from "@/components/atoms/Pill/";
 import { formatDate } from "@/utils/date";
 import prisma from "@/utils/db";
 import { getPosts } from "@/utils/posts";
