@@ -16,7 +16,7 @@ export default function Alert({ children, type = "info" }: Props) {
     <div
       className={`
         ${bgColorLookup[type]}
-        text-black text-base text-xs lowercase
+        text-black text-xs lowercase
         rounded-md px-5 py-3
         flex flex-col gap-1
         shadow-md
