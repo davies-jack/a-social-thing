@@ -26,7 +26,17 @@ export default function InputField({
       </label>
       <input
         id={id}
-        className="w-full block rounded-sm text-white bg-bg-primary p-2 px-3 text-xs tracking-wide outline-none focus:outline-bg-button"
+        className="
+          w-full
+          block
+          rounded-sm
+          text-white text-xs
+          bg-bg-primary
+          p-2 px-3
+          tracking-wide
+          outline-none
+          focus:outline-bg-button
+        "
         type={type || "text"}
         onChange={onChange}
         placeholder={placeholder}
