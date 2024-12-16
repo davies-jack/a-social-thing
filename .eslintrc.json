@@ -3,7 +3,19 @@
     "next/core-web-vitals",
     "next/typescript",
     "plugin:storybook/recommended",
-    "prettier"
+    "eslint:recommended",
+    "prettier",
+    "plugin:prettier/recommended",
+    "plugin:@typescript-eslint/recommended"
   ],
-  "plugins": ["prettier"]
+  "plugins": ["prettier", "@typescript-eslint"],
+  "env": {
+    "jest": true
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
+  "parser": "@typescript-eslint/parser"
 }
