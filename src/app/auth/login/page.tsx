@@ -1,13 +1,14 @@
 "use client";
 
 import Button from "@/components/atoms/Button";
-import Error from "@/components/atoms/Error";
+import Error from "@/components/atoms/Alert";
 import InputField from "@/components/atoms/InputField";
 import { useAuth } from "@/contexts/AuthContext";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 import React, { FormEvent, useState } from "react";
+import Alert from "@/components/atoms/Alert";
 
 function LoginForm({
   email,
@@ -37,28 +38,20 @@ function LoginForm({
           <span className="text-paragraph-text font-normal">login to</span>{" "}
           a-social
         </h1>
-        {error && <Error message={error} className="my-2" />}
+        {error && <Alert type="error">{error}</Alert>}
 
-        <label
-          htmlFor="email"
-          className="text-paragraph-text text-sm leading-none tracking-tight mb-1"
-        >
-          email address
-        </label>
         <InputField
+          id="email"
+          label="email address"
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           placeholder="john@example.com"
         />
 
-        <label
-          htmlFor="password"
-          className="mt-3 text-paragraph-text text-sm leading-none tracking-tight mb-1"
-        >
-          password
-        </label>
         <InputField
+          id="password"
+          label="password"
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
