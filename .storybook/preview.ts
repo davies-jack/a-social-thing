@@ -18,7 +18,11 @@ const preview: Preview = {
             {
               name: 'dark',
               value: '#202020',
-      },
+            },
+            {
+              name: "light",
+              value: "#fafafa",
+            }
     ],
   },
   layout: 'fullscreen',
