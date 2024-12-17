@@ -4,26 +4,46 @@ import Container from ".";
 describe("Container", () => {
   it("renders children correctly", () => {
     render(
-      <Container>
+      <Container title="Test Title" titleLevel="h1">
         <div>Test Content</div>
       </Container>
     );
+    const containerTitleElement = screen.getByRole("heading", { level: 1 });
+    const outerContainerElement = containerTitleElement.parentElement;
+
+    expect(outerContainerElement).toBeInTheDocument();
+    expect(containerTitleElement).toBeInTheDocument();
+
+    expect(containerTitleElement).toHaveTextContent("Test Title");
+    expect(screen.getByText("Test Content")).toBeInTheDocument();
+  });
+
+  it("renders correctly without title / titleLevel", () => {
+    render(<Container>Test Content</Container>);
+
+    expect(screen.queryByRole("heading")).not.toBeInTheDocument();
     expect(screen.getByText("Test Content")).toBeInTheDocument();
   });
 
   it("applies the correct default styling classes", () => {
     render(
-      <Container>
+      <Container title="Test Title" titleLevel="h1">
         <div>Test Content</div>
       </Container>
     );
 
-    const containerElement = screen.getByText("Test Content").parentElement;
-    expect(containerElement).toHaveClass("text-sm leading-5 tracking-tight text-paragraph-text");
+    const containerTitleElement = screen.getByRole("heading", { level: 1 });
+    const outerContainerElement = containerTitleElement.parentElement;
+
+    expect(outerContainerElement).toHaveClass("bg-bg-secondary rounded-md p-4 shadow-md w-full");
   });
 
   it("renders with the default level h1", () => {
-    render(<Container title="Test Title">Test Content</Container>);
+    render(
+      <Container title="Test Title" titleLevel="h1">
+        Test Content
+      </Container>
+    );
     expect(screen.getByRole("heading", { level: 1 })).toBeInTheDocument();
   });
 
@@ -33,8 +53,14 @@ describe("Container", () => {
         Test Content
       </Container>
     );
-    expect(screen.getByRole("heading", { level: 1 })).toBeInTheDocument();
-    expect(screen.getByRole("heading", { level: 1 })).toHaveClass("mt-2 mb-2");
+
+    const containerTitleElement = screen.getByRole("heading", { level: 1 });
+    const outerContainerElement = containerTitleElement.parentElement;
+
+    expect(outerContainerElement).toBeInTheDocument();
+    expect(containerTitleElement).toBeInTheDocument();
+
+    expect(outerContainerElement).toHaveClass("mt-2 mb-2");
   });
 
   it("renders with the correct spacing (marginLeft, marginRight)", () => {
@@ -43,7 +69,14 @@ describe("Container", () => {
         Test Content
       </Container>
     );
-    expect(screen.getByRole("heading", { level: 1 })).toHaveClass("ml-2 mr-2");
+
+    const containerTitleElement = screen.getByRole("heading", { level: 1 });
+    const outerContainerElement = containerTitleElement.parentElement;
+
+    expect(outerContainerElement).toBeInTheDocument();
+    expect(containerTitleElement).toBeInTheDocument();
+
+    expect(outerContainerElement).toHaveClass("ml-2 mr-2");
   });
 
   it("renders with no title", () => {
