@@ -6,8 +6,8 @@ interface CreatePostInput {
   status: string;
 }
 interface CreatePostOutput {
-  success: boolean;
   data?: Post;
+  message?: string;
   error?: string;
 }
 
@@ -17,16 +17,16 @@ export const createPost = async ({
 }: CreatePostInput): Promise<CreatePostOutput> => {
   try {
     if (!userId || !status) {
-      return { success: false, error: "Invalid input" };
+      return { error: "Invalid input" };
     }
 
     const post = await prisma.posts.create({
       data: { userId, status },
     });
 
-    return { success: true, data: post };
+    return { data: post, message: "Post created successfully" };
   } catch (error) {
     console.error("Failed to create post", error);
-    return { success: false, error: "Failed to create post" };
+    return { error: "Failed to create post" };
   }
 };
