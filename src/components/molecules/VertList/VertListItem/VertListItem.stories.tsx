@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import VertListItem from "./index";
 
 const meta = {
-  title: "Molecules/VertListItem",
+  title: "Molecules/VertList/VertListItem",
   component: VertListItem,
   parameters: {
     layout: "centered",
