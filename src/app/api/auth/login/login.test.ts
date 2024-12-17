@@ -90,6 +90,32 @@ describe("POST /api/auth/login", () => {
     expect(response?.status).toBe(401);
     expect(body?.message).toBe("Invalid password");
   });
+
+  it("should return 200 if login is successful", async () => {
+    (mockPrisma.user.findUnique as jest.Mock).mockResolvedValueOnce({
+      id: "1",
+      email: "test@test.com",
+      password: "hashedPassword",
+      username: "testuser",
+    });
+    (bcrypt.compare as jest.Mock).mockResolvedValueOnce(true);
+
+    const req = await createPostRequest(
+      "http://localhost:3000/api/auth/login",
+      NORMAL_BODY,
+      HEADERS
+    );
+
+    const response = await POST(req);
+    const body = await response?.json();
+
+    expect(response?.status).toBe(200);
+    expect(body?.message).toBe("Login successful");
+    expect(response?.cookies.get("token")).toBeDefined();
+    expect(response?.cookies.get("token")?.value).toBeDefined();
+    expect(response?.cookies.get("token")?.value).not.toBe("");
+  });
+
   it("should return 500 if error occurs", async () => {
     (mockPrisma.user.findUnique as jest.Mock).mockRejectedValueOnce(new Error("Database error"));
 

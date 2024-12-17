@@ -5,7 +5,7 @@ type Props = {
   level: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
 };
 
-export default function ContainerTitle({ value, level = "h2" }: Props) {
+export default function ContainerTitle({ value, level }: Props) {
   const Title = level;
   return (
     <Title

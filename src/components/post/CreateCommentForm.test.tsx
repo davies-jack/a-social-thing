@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import CreateCommentForm from "./CreateCommentForm";
 
 describe("CreateCommentForm", () => {
@@ -20,5 +20,15 @@ describe("CreateCommentForm", () => {
 
     const buttonElement = screen.getByRole("button");
     expect(buttonElement).toHaveClass("mt-4 self-end");
+  });
+
+  it("works correctly with the handleCreateComment function", () => {
+    const handleCreateComment = jest.fn();
+    render(<CreateCommentForm handleCreateComment={handleCreateComment} />);
+    const textareaElement = screen.getByRole("textbox");
+    fireEvent.change(textareaElement, { target: { value: "Test comment" } });
+    const buttonElement = screen.getByRole("button");
+    fireEvent.click(buttonElement);
+    expect(handleCreateComment).toHaveBeenCalledWith("Test comment");
   });
 });

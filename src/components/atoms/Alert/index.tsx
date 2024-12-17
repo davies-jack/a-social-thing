@@ -5,13 +5,14 @@ type Props = {
   children: React.ReactNode;
 };
 
-export default function Alert({ children, type = "info" }: Props) {
+export default function Alert({ children, type }: Props) {
   const bgColorLookup = {
     error: "bg-error-red",
     warning: "bg-warning-amber",
     info: "bg-info-blue",
     success: "bg-success-green",
   };
+
   return (
     <div
       className={`

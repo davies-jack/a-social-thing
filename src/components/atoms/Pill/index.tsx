@@ -9,11 +9,11 @@ export default function Pill({ children, className }: Props) {
   return (
     <div
       className={`
-        text-xs
+        text-xs text-paragraph-text
         cursor-pointer
-        bg-bg-card
+        bg-[#080808]
         border-2 border-bg-primary rounded-md
-        px-2 py-1
+        px-3 py-1
         transition-colors duration-75
         hover:bg-bg-primary hover:border-2 hover:border-transparent hover:shadow-md hover:text-headline-text
         ${className}
