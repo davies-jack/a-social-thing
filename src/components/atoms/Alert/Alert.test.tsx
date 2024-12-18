@@ -20,7 +20,7 @@ describe("Alert", () => {
     render(<Alert type="error">Test Error!</Alert>);
     const errorElement = screen.getByText("Test Error!");
     expect(errorElement).toHaveClass(
-      "bg-error-red text-xs rounded-md px-5 py-3 text-black text-xs lowercase shadow-md"
+      "bg-error-red text-white text-xs lowercase rounded-md px-3 py-2 flex flex-col gap-1 shadow-md"
     );
   });
 

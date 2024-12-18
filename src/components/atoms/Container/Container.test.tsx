@@ -35,7 +35,7 @@ describe("Container", () => {
     const containerTitleElement = screen.getByRole("heading", { level: 1 });
     const outerContainerElement = containerTitleElement.parentElement;
 
-    expect(outerContainerElement).toHaveClass("bg-bg-secondary rounded-md p-4 shadow-md w-full");
+    expect(outerContainerElement).toHaveClass("bg-bg-card rounded-md p-4 shadow-md w-full");
   });
 
   it("renders with the default level h1", () => {

@@ -9,6 +9,7 @@ type Props = {
 };
 
 export default function Pill({ children, className, onClick, large, darker }: Props) {
+  const classNames = className ? className : "";
   return (
     <div
       onClick={onClick}
@@ -26,7 +27,7 @@ export default function Pill({ children, className, onClick, large, darker }: Pr
         ${large ? "hover:border-l-4 hover:border-bg-button" : ""}
         ${darker ? "" : "hover:bg-[#080808]"}
 
-        ${className}
+        ${classNames}
     `}
     >
       {children}

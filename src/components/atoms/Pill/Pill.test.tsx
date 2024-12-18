@@ -11,7 +11,7 @@ describe("Pill", () => {
     render(<Pill>Test Children</Pill>);
     const pillElement = screen.getByText("Test Children");
     expect(pillElement).toHaveClass(
-      "text-xs text-paragraph-text cursor-pointer bg-[#080808] border-2 border-bg-primary rounded-md px-3 py-1 transition-colors duration-75 hover:bg-bg-primary hover:border-2 hover:border-transparent hover:shadow-md hover:text-headline-text"
+      "bg-bg-card cursor-pointer rounded-sm transition-colors duration-75 hover:text-headline-text hover:shadow-lg tracking-normal leading-tight text-xs text-paragraph-text px-3 py-1 hover:bg-[#080808]"
     );
   });
 
