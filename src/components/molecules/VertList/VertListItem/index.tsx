@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 type Props = {
@@ -5,6 +6,8 @@ type Props = {
   isFirst?: boolean;
   isLast?: boolean;
   noCursor?: boolean;
+  href?: string;
+  emphasized?: boolean;
 };
 
 export default function VertListItem({
@@ -12,7 +15,11 @@ export default function VertListItem({
   isFirst = false,
   isLast = false,
   noCursor = false,
+  href,
+  emphasized,
 }: Props) {
+  const HrefLink = href ? Link : "div";
+
   return (
     <li
       className={`
@@ -24,9 +31,10 @@ export default function VertListItem({
         ${isFirst ? "rounded-t-lg" : ""}
         ${isLast ? "border-b-0 rounded-b-lg" : ""}
         ${noCursor ? "cursor-default" : "cursor-pointer"}
+        ${emphasized ? "bg-bg-button text-headline-text" : ""}
       `}
     >
-      {children}
+      <HrefLink href={href as string}>{children}</HrefLink>
     </li>
   );
 }
