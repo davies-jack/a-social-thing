@@ -2,11 +2,9 @@ import Container from "@/components/atoms/Container";
 import Paragraph from "@/components/atoms/Paragraph";
 import Pill from "@/components/atoms/Pill/";
 import TimelinePost from "@/components/molecules/TimelinePost";
-import { formatDate } from "@/utils/date";
 import prisma from "@/utils/db";
 import { getPosts } from "@/utils/posts";
 import { userIdFromUsername } from "@/utils/user";
-import { revalidatePath } from "next/dist/server/web/spec-extension/revalidate";
 import { headers } from "next/headers";
 import React from "react";
 
@@ -22,7 +20,6 @@ export default async function ProfilePage({ params }: Props) {
   const { username } = await params;
   const profileUserId = await userIdFromUsername(username);
 
-  let following = false;
   let amountOfFollowers = 0;
   let amountOfFollowing = 0;
 
@@ -30,9 +27,9 @@ export default async function ProfilePage({ params }: Props) {
     return <div>User not found</div>;
   }
 
-  const doWeFollow = await prisma.relationships.findFirst({
-    where: { followerId: userId, followingId: profileUserId },
-  });
+  // const doWeFollow = await prisma.relationships.findFirst({
+  //   where: { followerId: userId, followingId: profileUserId },
+  // });
   const getFollowerAmount = await prisma.relationships.count({
     where: { followingId: profileUserId },
   });
@@ -42,28 +39,28 @@ export default async function ProfilePage({ params }: Props) {
   amountOfFollowers = getFollowerAmount;
   amountOfFollowing = getFollowingAmount;
 
-  if (doWeFollow) {
-    following = true;
-  }
+  // if (doWeFollow) {
+  //   following = true;
+  // }
 
-  let isOurProfile = false;
-  if (profileUserId === userId) {
-    isOurProfile = true;
-  }
+  // let isOurProfile = false;
+  // if (profileUserId === userId) {
+  //   isOurProfile = true;
+  // }
 
-  const handleFollowUser = async () => {
-    "use server";
-    if (doWeFollow) {
-      await prisma.relationships.delete({
-        where: { id: doWeFollow.id },
-      });
-    } else {
-      await prisma.relationships.create({
-        data: { followerId: userId, followingId: profileUserId },
-      });
-    }
-    revalidatePath(`/profile/${username}`);
-  };
+  // const handleFollowUser = async () => {
+  //   "use server";
+  //   if (doWeFollow) {
+  //     await prisma.relationships.delete({
+  //       where: { id: doWeFollow.id },
+  //     });
+  //   } else {
+  //     await prisma.relationships.create({
+  //       data: { followerId: userId, followingId: profileUserId },
+  //     });
+  //   }
+  //   revalidatePath(`/profile/${username}`);
+  // };
 
   const posts = await getPosts(profileUserId);
 
@@ -97,9 +94,9 @@ export default async function ProfilePage({ params }: Props) {
         </ul>
         <div className="mt-4">
           <Paragraph>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Totam dolorum quasi et
-            quaerat molestias obcaecati, explicabo necessitatibus mollitia alias est laboriosam rerum.
-            Iusto nesciunt, dolorum eveniet itaque quidem hic cumque?
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Totam dolorum quasi et quaerat
+            molestias obcaecati, explicabo necessitatibus mollitia alias est laboriosam rerum. Iusto
+            nesciunt, dolorum eveniet itaque quidem hic cumque?
           </Paragraph>
         </div>
       </Container>

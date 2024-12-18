@@ -3,7 +3,6 @@ import { getFollowerAmount, getFollowingAmount, usernameFromUserId } from "@/uti
 import { headers } from "next/headers";
 import Pill from "@/components/atoms/Pill";
 import Link from "next/link";
-import { Navigation } from "@/components/Navigation";
 
 export default async function RootLayout({
   children,
@@ -69,7 +68,9 @@ export default async function RootLayout({
           </ul>
         </section>
 
-        <section className="md:col-start-2 overflow-y-auto h-screen pt-6 px-0 md:px-6 lg:px-24">{children}</section>
+        <section className="md:col-start-2 overflow-y-auto h-screen pt-6 px-0 md:px-6 lg:px-24">
+          {children}
+        </section>
       </main>
     </AuthProvider>
   );
