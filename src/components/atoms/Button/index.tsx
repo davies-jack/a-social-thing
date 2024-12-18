@@ -15,10 +15,11 @@ export default function Button({ label, className, disabled, onClick }: Props) {
             self-end
             px-4 py-2
             border-2 border-bg-button rounded-sm
-            text-sm text-headline-text font-bold
-            tracking-wide
+            bg-bg-button
+            text-xs text-headline-text
+            tracking-normal leading-tight
             transition-colors duration-75
-            hover:bg-bg-button hover:border-2 hover:border-transparent hover:shadow-md
+            hover:bg-bg-card hover:border-2 hover:border-bg-button hover:shadow-md
             ${className}
             disabled:opacity-50 disabled:cursor-not-allowed
         `}

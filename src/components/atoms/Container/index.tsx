@@ -20,7 +20,7 @@ export default function Container({ title, titleLevel = "h1", children, spacing 
   return (
     <div
       className={`
-        bg-bg-secondary
+        bg-bg-card
         rounded-md
         p-4
         shadow-md
@@ -33,7 +33,7 @@ export default function Container({ title, titleLevel = "h1", children, spacing 
     `}
     >
       {title && <ContainerTitle value={title} level={titleLevel} />}
-      <div className="text-sm leading-5 tracking-tight text-paragraph-text">{children}</div>
+      <div className="text-sm leading-tight tracking-normal text-[#eee]">{children}</div>
     </div>
   );
 }

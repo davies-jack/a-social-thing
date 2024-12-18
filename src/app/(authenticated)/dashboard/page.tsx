@@ -4,7 +4,7 @@ import { createPost } from "../../actions/post";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import CreatePostForm from "@/components/timeline/CreatePostForm";
-import TimelinePost from "@/components/timeline/TimelinePost";
+import TimelinePost from "@/components/molecules/TimelinePost";
 import { SinglePost } from "@/types/Post";
 import { getComments } from "@/utils/posts";
 
@@ -40,9 +40,11 @@ export default async function DashboardPage() {
 
   return (
     <section>
-      <CreatePostForm onSubmit={postStatus} />
+      <div className="w-2/3 mx-auto my-6">
+        <CreatePostForm onSubmit={postStatus} />
+      </div>
       <section className="flex flex-col items-center">
-        <ul className="mt-4 w-full">
+        <ul className="mt-4 w-full grid grid-cols-1 md:grid-cols-2 items-start gap-6">
           {timeline.length === 0 && <li>no posts yet</li>}
           {prefetchedPosts.map((post: SinglePost) => {
             const toggleLikePost = async () => {
@@ -51,15 +53,7 @@ export default async function DashboardPage() {
               revalidatePath("/dashboard");
             };
 
-            return (
-              <TimelinePost
-                key={post.id}
-                post={post}
-                hasLiked={post.hasLiked}
-                toggleLikePost={toggleLikePost}
-                commentAmount={post.commentAmount}
-              />
-            );
+            return <TimelinePost key={post.id} post={post} toggleLikePost={toggleLikePost} />;
           })}
         </ul>
       </section>

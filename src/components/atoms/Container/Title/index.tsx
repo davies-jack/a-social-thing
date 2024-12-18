@@ -10,9 +10,9 @@ export default function ContainerTitle({ value, level }: Props) {
   return (
     <Title
       className="
-      text-base text-headline-text font-bold
+      text-xs text-paragraph-text font-medium
       break-words
-      leading-4
+      leading-tight tracking-normal
       mb-2
     "
     >

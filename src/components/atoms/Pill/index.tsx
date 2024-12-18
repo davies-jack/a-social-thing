@@ -3,19 +3,29 @@ import React from "react";
 type Props = {
   children: React.ReactNode;
   className?: string;
+  onClick?: () => void;
+  large?: boolean;
+  darker?: boolean;
 };
 
-export default function Pill({ children, className }: Props) {
+export default function Pill({ children, className, onClick, large, darker }: Props) {
   return (
     <div
+      onClick={onClick}
       className={`
-        text-xs text-paragraph-text
+        ${darker ? "bg-[#080808]" : "bg-bg-card"}
         cursor-pointer
-        bg-[#080808]
-        border-2 border-bg-primary rounded-md
-        px-3 py-1
+        rounded-sm
         transition-colors duration-75
-        hover:bg-bg-primary hover:border-2 hover:border-transparent hover:shadow-md hover:text-headline-text
+        hover:text-headline-text
+        hover:shadow-lg
+        tracking-normal leading-tight
+        ${large ? "text-sm" : "text-xs"} text-paragraph-text
+        ${large ? "border-l-4 border-transparent" : ""}
+        ${large ? "px-4 py-2" : "px-3 py-1"}
+        ${large ? "hover:border-l-4 hover:border-bg-button" : ""}
+        ${darker ? "" : "hover:bg-[#080808]"}
+
         ${className}
     `}
     >

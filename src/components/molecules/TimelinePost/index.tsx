@@ -1,4 +1,5 @@
 import Container from "@/components/atoms/Container";
+import Paragraph from "@/components/atoms/Paragraph";
 import Pill from "@/components/atoms/Pill";
 import { SinglePost } from "@/types/Post";
 import { formatDate } from "@/utils/date";
@@ -15,7 +16,7 @@ export default function TimelinePost({ post, toggleLikePost }: Props) {
 
   return (
     <Container title={`@ ${username}`} titleLevel="h2">
-      <p className="content">{status}</p>
+      <Paragraph light>{status}</Paragraph>
 
       <div
         className="
@@ -26,7 +27,7 @@ export default function TimelinePost({ post, toggleLikePost }: Props) {
       "
       >
         <div className="flex flex-row gap-2 items-center">
-          <Pill className="flex flex-row gap-2 items-center" onClick={toggleLikePost}>
+          <Pill className="flex flex-row gap-2 items-center" onClick={toggleLikePost} darker>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="10"
@@ -38,7 +39,7 @@ export default function TimelinePost({ post, toggleLikePost }: Props) {
             </svg>
             <span>{post.likes.length} likes</span>
           </Pill>
-          <Pill className="flex flex-row gap-2 items-center">
+          <Pill className="flex flex-row gap-2 items-center" darker>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="10"
@@ -48,11 +49,11 @@ export default function TimelinePost({ post, toggleLikePost }: Props) {
             >
               <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10z" />
             </svg>
-            <span>{post.commentAmount} comments</span>
+            <Paragraph>{post.commentAmount} comments</Paragraph>
           </Pill>
         </div>
 
-        <span className="text-paragraph-text">posted {formattedDate}</span>
+        <Paragraph smaller>posted {formattedDate}</Paragraph>
       </div>
     </Container>
   );
