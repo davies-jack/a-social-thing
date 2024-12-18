@@ -10,6 +10,9 @@ type Props = {
 
 export default function Pill({ children, className, onClick, large, darker }: Props) {
   const classNames = className ? className : "";
+  const largeClassNames =
+    "text-sm border-l-4 bx-4 py-2 hover:border-l-4 border-transparent hover:border-bg-button";
+  const smallerClassNames = "text-xs px-3 py-1 hover:bg-[#080808]";
   return (
     <div
       onClick={onClick}
@@ -21,10 +24,8 @@ export default function Pill({ children, className, onClick, large, darker }: Pr
         hover:text-headline-text
         hover:shadow-lg
         tracking-normal leading-tight
-        ${large ? "text-sm" : "text-xs"} text-paragraph-text
-        ${large ? "border-l-4 border-transparent" : ""}
-        ${large ? "px-4 py-2" : "px-3 py-1"}
-        ${large ? "hover:border-l-4 hover:border-bg-button" : ""}
+        text-paragraph-text
+        ${large ? largeClassNames : smallerClassNames}
         ${darker ? "" : "hover:bg-[#080808]"}
 
         ${classNames}
