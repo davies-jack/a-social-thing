@@ -1,6 +1,8 @@
 import { AuthProvider } from "@/contexts/AuthContext";
 import { getFollowerAmount, getFollowingAmount, usernameFromUserId } from "@/utils/user";
 import { headers } from "next/headers";
+import Pill from "@/components/atoms/Pill";
+import Link from "next/link";
 import { Navigation } from "@/components/Navigation";
 
 export default async function RootLayout({
@@ -12,30 +14,62 @@ export default async function RootLayout({
   const userId = headerList.get("x-user-id") as string;
   const username = (await usernameFromUserId(userId)) as string;
 
+  const followerAmount = await getFollowerAmount(userId);
+  const followersSuffix = followerAmount === 1 ? "follower" : "followers";
+  const followers = `${followerAmount} ${followersSuffix}`;
+
+  const followingAmount = await getFollowingAmount(userId);
+  const followingSuffix = followingAmount === 1 ? "following" : "following";
+  const following = `${followingAmount} ${followingSuffix}`;
+
   return (
     <AuthProvider>
       <main className="grid md:grid-cols-dashboard grid-cols-1 gap-4 items-start h-screen">
-        <section className="pt-6 border-r-none md:border-r-2 md:border-r-bg-button block md:fixed md:w-[320px] h-auto md:h-screen px-6">
-          <div className="bg-bg-card rounded-md p-4 mb-6">
-            <h1 className="text-headline-text text-lg font-bold flex flex-row gap-2">
-              <span className="text-paragraph-text">@</span>
-              <span className="font-bold">{username}</span>
-            </h1>
-            <div className="mt-1 flex flex-row gap-2 text-sm">
-              <span className="hover:text-headline-text hover:cursor-pointer">
-                {getFollowerAmount(userId as string)} followers
-              </span>
-              <span className="hover:text-headline-text hover:cursor-pointer">
-                {getFollowingAmount(userId as string)} following
-              </span>
-            </div>
-          </div>
-          <Navigation username={username} />
-          <p className="text-paragraph-text text-xs text-center m-6 cursor-pointer">logout?</p>
+        <section className="p-6 flex flex-col bg-gradient-to-b md:bg-gradient-to-r from-bg-card to-bg-bg-primary block md:fixed md:w-[320px] md:h-screen">
+          <h1 className="text-headline-text">
+            hey,{" "}
+            <Link href={`/profile/${username}`} className="underline">
+              {username}
+            </Link>
+            !
+          </h1>
+
+          <ul className="mt-2 flex flex-row gap-2">
+            <li>
+              <Pill>{followers}</Pill>
+            </li>
+            <li>
+              <Pill>{following}</Pill>
+            </li>
+          </ul>
+
+          <ul className="mt-4 md:mt-12 flex flex-row md:flex-col overflow-x-scroll gap-2">
+            <li>
+              <Link href="/dashboard">
+                <Pill className="w-full" large>
+                  Dashboard
+                </Pill>
+              </Link>
+            </li>
+            <li>
+              <Pill large>
+                <p>Profile</p>
+              </Pill>
+            </li>
+            <li>
+              <Pill large>
+                <p>Profile</p>
+              </Pill>
+            </li>
+            <li>
+              <Pill large>
+                <p>Profile</p>
+              </Pill>
+            </li>
+          </ul>
         </section>
-        <div className="md:col-start-2 overflow-y-auto h-screen pt-6 px-0 md:px-6 lg:px-24">
-          {children}
-        </div>
+
+        <section className="md:col-start-2 overflow-y-auto h-screen pt-6 px-0 md:px-6 lg:px-24">{children}</section>
       </main>
     </AuthProvider>
   );
