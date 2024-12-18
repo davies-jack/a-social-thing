@@ -103,7 +103,16 @@ export default async function ProfilePage({ params }: Props) {
 
       <ul className="mt-4 flex flex-col gap-4 w-2/3 mx-auto">
         {posts.map((post) => {
-          return <TimelinePost key={post.id} post={post} />;
+          const singlePost = {
+            ...post,
+            hasLiked: false,
+            commentAmount: post.comments.length,
+            likes: post.likes,
+            user: {
+              username: post.user.username,
+            },
+          };
+          return <TimelinePost key={post.id} post={singlePost} toggleLikePost={() => {}} />;
         })}
       </ul>
     </section>
